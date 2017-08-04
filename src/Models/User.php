@@ -14,4 +14,9 @@ class User
 		return $this->container->db->table('users')
 			->select('*')->get();
 	}
+
+	public function getUserForId($id){
+		return $this->container->db->table('users')
+			->select('*')->find($id);
+	}
 }
