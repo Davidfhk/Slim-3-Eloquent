@@ -6,3 +6,5 @@ $app->get('/',function($request,$response,$args){
 });
 
 $app->get('/users', 'UserController:getAll');
+
+$app->get('/user/{id}', 'UserController:getUserForId');
