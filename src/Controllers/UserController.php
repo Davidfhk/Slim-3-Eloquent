@@ -13,9 +13,18 @@ class UserController
 
 	public function getAll($request, $response){
 
-		$datas = new User($this->container);
-		$show = $datas->getAll();
-		$response = $response->withJson($show);
+		$user = new User($this->container);
+		$datas = $user->getAll();
+		$response = $response->withJson($datas);
 		return $response;
+	}
+
+	public function getUserForId($request, $response, $args){
+		$id = $args['id'];
+		$user = new User($this->container);
+		$datas = $user->getUserForId($id);
+		$response = $response->withJson($datas);
+		return $response;
+
 	}
 }
