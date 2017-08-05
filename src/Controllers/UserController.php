@@ -27,4 +27,17 @@ class UserController
 		return $response;
 
 	}
+
+	public function addUser($request, $response, $args){
+		$newDatas = $request->getParsedBody();
+
+		$name = $newDatas['name'];
+		$surname = $newDatas['surname'];
+		$email = $newDatas['email'];
+		$fav = $newDatas['fav'];
+
+		$user = new User($this->container);
+		$user->addUser($name,$surname,$email,$fav);
+
+	}
 }
