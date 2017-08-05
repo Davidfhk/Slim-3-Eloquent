@@ -17,7 +17,7 @@ class User
 
 	public function getUserForId($id){
 		return $this->container->db->table('users')
-			->select('*')->find($id);
+			->select('*')->where('id','=',$id)->get();
 	}
 
 	public function addUser($name,$surname,$email,$fav = 0){
