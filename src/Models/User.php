@@ -43,5 +43,11 @@ class User
 		echo "El usuario ". $name . " ha sido modificado con exito";
 	}
 
+	public function deleteUser($id){
+		$this->container->db->table('users')
+			->where('id',$id)
+			->delete();
 
+		echo "Usuario eliminado con exito";
+	}
 }
