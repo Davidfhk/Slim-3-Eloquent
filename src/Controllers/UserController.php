@@ -54,4 +54,12 @@ class UserController
 		$user->putUser($id,$name,$surname,$email,$fav);
 
 	}
+
+	public function deleteUser($request, $response, $args){
+		$id = $args['id'];
+
+		$user = new User($this->container);
+		$user->deleteUser($id);
+		
+	}
 }
