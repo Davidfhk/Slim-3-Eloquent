@@ -40,4 +40,18 @@ class UserController
 		$user->addUser($name,$surname,$email,$fav);
 
 	}
+
+	public function putUser($request, $response, $args){
+		$datasUpdate = $request->getParsedBody();
+
+		$id = $args['id'];
+		$name = $datasUpdate['name'];
+		$surname = $datasUpdate['surname'];
+		$email = $datasUpdate['email'];
+		$fav = $datasUpdate['fav'];
+
+		$user = new User($this->container);
+		$user->putUser($id,$name,$surname,$email,$fav);
+
+	}
 }
