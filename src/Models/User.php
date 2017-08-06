@@ -31,5 +31,17 @@ class User
 		echo "El usuario ". $name . " ha sido insertado con exito";
 	}
 
+	public function putUser($id,$name,$surname,$email,$fav = 0){
+		$this->container->db->table('users')
+			->where('id',$id)
+			->update([
+					'nombre'=>$name,
+					'apellido'=>$surname,
+					'email'=>$email,
+					'favorito'=>$fav
+					]);
+		echo "El usuario ". $name . " ha sido modificado con exito";
+	}
+
 
 }
