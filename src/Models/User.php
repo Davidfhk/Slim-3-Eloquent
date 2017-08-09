@@ -4,24 +4,24 @@ namespace App\Models;
 
 class User
 {
-	private $container;
+	private $db;
 
-	public function __construct($container){
-		$this->container = $container;
+	public function __construct($db){
+		$this->db = $db;
 	}
 
 	public function getAll(){
-		return $this->container->db->table('users')
+		return $this->db->table('users')
 			->select('*')->get();
 	}
 
 	public function getUserForId($id){
-		return $this->container->db->table('users')
+		return $this->db->table('users')
 			->select('*')->where('id',$id)->get();
 	}
 
 	public function addUser($name,$surname,$email,$fav = 0){
-		$this->container->db->table('users')
+		$this->db->table('users')
 			->insert([
 					'nombre'=>$name,
 					'apellido'=>$surname,
@@ -32,7 +32,7 @@ class User
 	}
 
 	public function putUser($id,$name,$surname,$email,$fav = 0){
-		$this->container->db->table('users')
+		$this->db->table('users')
 			->where('id',$id)
 			->update([
 					'nombre'=>$name,
@@ -44,7 +44,7 @@ class User
 	}
 
 	public function deleteUser($id){
-		$this->container->db->table('users')
+		$this->db->table('users')
 			->where('id',$id)
 			->delete();
 
