@@ -5,15 +5,15 @@ use App\Models\User;
 
 class UserController
 {
-	private $container;
+	private $db;
 
-	public function __construct($container){
-		$this->container = $container;
+	public function __construct($db){
+		$this->db = $db;
 	}
 
 	public function getAll($request, $response){
 
-		$user = new User($this->container);
+		$user = new User($this->db);
 		$datas = $user->getAll();
 		$response = $response->withJson($datas);
 		return $response;
@@ -21,7 +21,7 @@ class UserController
 
 	public function getUserForId($request, $response, $args){
 		$id = $args['id'];
-		$user = new User($this->container);
+		$user = new User($this->db);
 		$datas = $user->getUserForId($id);
 		$response = $response->withJson($datas);
 		return $response;
@@ -36,7 +36,7 @@ class UserController
 		$email = $newDatas['email'];
 		$fav = $newDatas['fav'];
 
-		$user = new User($this->container);
+		$user = new User($this->db);
 		$user->addUser($name,$surname,$email,$fav);
 
 	}
@@ -50,7 +50,7 @@ class UserController
 		$email = $datasUpdate['email'];
 		$fav = $datasUpdate['fav'];
 
-		$user = new User($this->container);
+		$user = new User($this->db);
 		$user->putUser($id,$name,$surname,$email,$fav);
 
 	}
@@ -58,7 +58,7 @@ class UserController
 	public function deleteUser($request, $response, $args){
 		$id = $args['id'];
 
-		$user = new User($this->container);
+		$user = new User($this->db);
 		$user->deleteUser($id);
 		
 	}
