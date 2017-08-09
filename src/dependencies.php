@@ -13,5 +13,5 @@ $container['db'] = function ($c){
 };
 
 $container['UserController'] = function ($c){
-	return new \App\Controllers\UserController($c);
+	return new \App\Controllers\UserController($c['db']);
 };
